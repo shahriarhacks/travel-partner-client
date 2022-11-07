@@ -54,6 +54,7 @@ const Header = () => {
         </div>
         <Link to="/" className="btn btn-ghost normal-case text-xl">
           <img src={logo} alt="Logo" />
+          <h2 className="lg:text-3xl lg:font-bold text-xl">Travelers</h2>
         </Link>
       </div>
       <div className="navbar-center hidden lg:flex">
