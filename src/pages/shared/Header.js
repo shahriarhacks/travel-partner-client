@@ -1,7 +1,30 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
+import logo from "../../assets/logo/logo.png";
 
 const Header = () => {
+  const menuItems = (
+    <>
+      <li className="font-semibold">
+        <NavLink to="/home">Home</NavLink>
+      </li>
+      <li className="font-semibold">
+        <NavLink to="/about">About</NavLink>
+      </li>
+      <li className="font-semibold">
+        <NavLink to="/services">Services</NavLink>
+      </li>
+      <li className="font-semibold">
+        <NavLink to="/blog">Blog</NavLink>
+      </li>
+      <li className="font-semibold">
+        <NavLink to="/contact">Contact</NavLink>
+      </li>
+      <li className="font-semibold">
+        <NavLink to="/login">Login</NavLink>
+      </li>
+    </>
+  );
   return (
     <div className="navbar bg-base-100">
       <div className="navbar-start">
@@ -25,14 +48,16 @@ const Header = () => {
           <ul
             tabIndex={0}
             className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
-          ></ul>
+          >
+            {menuItems}
+          </ul>
         </div>
         <Link to="/" className="btn btn-ghost normal-case text-xl">
-          daisyUI
+          <img src={logo} alt="Logo" />
         </Link>
       </div>
       <div className="navbar-center hidden lg:flex">
-        <ul className="menu menu-horizontal p-0"></ul>
+        <ul className="menu menu-horizontal p-0">{menuItems}</ul>
       </div>
       <div className="navbar-end">
         <Link to="/booking" className="btn btn-outline btn-warning">
