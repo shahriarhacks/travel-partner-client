@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
 import logo from "../../assets/logo/logo.png";
 import { AuthContext } from "../../contexts/AuthProvider";
+import { FcManager } from "react-icons/fc";
 
 const Header = () => {
   const { user, logout } = useContext(AuthContext);
@@ -26,10 +27,10 @@ const Header = () => {
       {user && user.uid ? (
         <>
           <li className="font-semibold">
-            <NavLink to="/reviews">Reviews</NavLink>
+            <NavLink to="/add-services">Add Services</NavLink>
           </li>
           <li className="font-semibold">
-            <NavLink to="/add-services">Add Services</NavLink>
+            <NavLink to="/reviews">Reviews</NavLink>
           </li>
           <li className="font-semibold">
             <button onClick={() => logout()}>Log Out</button>
@@ -77,13 +78,26 @@ const Header = () => {
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal p-0">{menuItems}</ul>
       </div>
-      <div className="navbar-end">
-        <Link
-          to="/services"
-          className="btn btn-outline btn-warning hover:rounded-full"
-        >
-          Booking now
-        </Link>
+      <div className="navbar-end mr-3">
+        {user && user.uid ? (
+          user.photoURL ? (
+            <img
+              title={user.displayName}
+              alt=""
+              src={user.photoURL}
+              className="object-cover w-10 h-10 rounded-full shadow dark:bg-gray-500"
+            />
+          ) : (
+            <FcManager className="object-cover w-10 h-10 rounded-full shadow dark:bg-gray-500" />
+          )
+        ) : (
+          <Link
+            to="/services"
+            className="btn btn-outline btn-warning hover:rounded-full"
+          >
+            Booking now
+          </Link>
+        )}
       </div>
     </div>
   );
