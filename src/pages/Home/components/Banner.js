@@ -17,7 +17,7 @@ const Banner = () => {
                 Believe in Humanity.
               </p>
               <Link to="/services">
-                <button className="btn btn-outline btn-primary">
+                <button className="btn btn-outline btn-primary hover:rounded-full">
                   Get Started
                 </button>
               </Link>
