@@ -10,7 +10,7 @@ const Banner = () => {
         <div className="hero">
           <div className="hero-content text-center">
             <div className="w-full mx-auto mt-10">
-              <h1 className="text-4xl font-bold">Travel Buddy</h1>
+              <h1 className="text-4xl font-bold">Travel Partner</h1>
               <p className="py-6 text-xl">
                 World's qualified traveler.
                 <br />

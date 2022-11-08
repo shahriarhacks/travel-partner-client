@@ -1,8 +1,44 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import Lottie from "lottie-react";
 import register from "../../assets/Animation/register.json";
+import { AuthContext } from "../../contexts/AuthProvider";
+import { toast } from "react-toastify";
+
 const Register = () => {
+  const [error, setError] = useState("");
+  const { createUser, updateUserProfile } = useContext(AuthContext);
+
+  const handleRegister = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const name = form.name.value;
+    const photoURL = form.photoURL.value;
+    const email = form.email.value;
+    const password = form.password.value;
+    createUser(email, password)
+      .then((result) => {
+        setError("");
+        handleUpdateUserProfile(name, photoURL);
+        console.log(result.user);
+        form.reset();
+      })
+      .catch((err) => setError(err.message));
+  };
+
+  const handleUpdateUserProfile = (name, photoURL) => {
+    const profile = {
+      displayName: name,
+      photoURL: photoURL,
+    };
+
+    updateUserProfile(profile)
+      .then(() => {
+        toast.success("Successfully Updated");
+      })
+      .catch((error) => console.error(error));
+  };
+
   return (
     <div className="flex justify-center lg:flex-row flex-col-reverse my-10">
       <div className="w-full lg:w-1/2">
@@ -10,7 +46,11 @@ const Register = () => {
       </div>
       <div className="w-full max-w-md p-8 space-y-3 rounded-xl text-gray-900 bg-gray-100">
         <h1 className="text-2xl font-bold text-center">Register</h1>
-        <form className="space-y-6 ng-untouched ng-pristine ng-valid">
+        <p className="text-center text-orange-800">{error}</p>
+        <form
+          onSubmit={handleRegister}
+          className="space-y-6 ng-untouched ng-pristine ng-valid"
+        >
           <div className="space-y-1 text-sm">
             <label htmlFor="name" className="block text-gray-400">
               Name

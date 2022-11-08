@@ -1,8 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
 import logo from "../../assets/logo/logo.png";
+import { AuthContext } from "../../contexts/AuthProvider";
 
 const Header = () => {
+  const { user, logout } = useContext(AuthContext);
+
   const menuItems = (
     <>
       <li className="font-semibold">
@@ -20,9 +23,23 @@ const Header = () => {
       <li className="font-semibold">
         <NavLink to="/contact">Contact</NavLink>
       </li>
-      <li className="font-semibold">
-        <NavLink to="/login">Login</NavLink>
-      </li>
+      {user && user.uid ? (
+        <>
+          <li className="font-semibold">
+            <NavLink to="/reviews">Reviews</NavLink>
+          </li>
+          <li className="font-semibold">
+            <NavLink to="/add-services">Add Services</NavLink>
+          </li>
+          <li className="font-semibold">
+            <button onClick={() => logout()}>Log Out</button>
+          </li>
+        </>
+      ) : (
+        <li className="font-semibold">
+          <NavLink to="/login">Login</NavLink>
+        </li>
+      )}
     </>
   );
   return (
@@ -62,7 +79,7 @@ const Header = () => {
       </div>
       <div className="navbar-end">
         <Link
-          to="/booking"
+          to="/services"
           className="btn btn-outline btn-warning hover:rounded-full"
         >
           Booking now

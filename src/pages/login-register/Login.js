@@ -1,8 +1,31 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useContext, useState } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import Lottie from "lottie-react";
 import login from "../../assets/Animation/login.json";
+import { AuthContext } from "../../contexts/AuthProvider";
+import { toast } from "react-toastify";
+
 const Login = () => {
+  const { loginUser } = useContext(AuthContext);
+  const [error, setError] = useState("");
+  const location = useLocation();
+  const navigate = useNavigate();
+  const from = location.state?.from?.pathname || "/";
+
+  const handleLogin = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const email = form.email.value;
+    const password = form.password.value;
+    loginUser(email, password)
+      .then((result) => {
+        toast.success("Login Successfully Done");
+        console.log(result.user);
+        form.reset();
+        navigate(from, { replace: true });
+      })
+      .catch((err) => setError(err.message));
+  };
   return (
     <div className="flex justify-center lg:flex-row flex-col-reverse my-10">
       <div className="w-full lg:w-1/2">
@@ -10,7 +33,11 @@ const Login = () => {
       </div>
       <div className="w-full max-w-md p-8 space-y-3 rounded-xl text-gray-900 bg-gray-100">
         <h1 className="text-2xl font-bold text-center">Login</h1>
-        <form className="space-y-6 ng-untouched ng-pristine ng-valid">
+        <p className="text-center text-orange-800">{error}</p>
+        <form
+          onSubmit={handleLogin}
+          className="space-y-6 ng-untouched ng-pristine ng-valid"
+        >
           <div className="space-y-1 text-sm">
             <label htmlFor="email" className="block text-gray-400">
               Email
