@@ -15,7 +15,7 @@ const Footer = () => {
           >
             <img src={logo} alt="Logo" />
             <span className="self-center text-2xl font-semibold">
-              Travel Buddy
+              Travel Partner
             </span>
           </Link>
         </div>
