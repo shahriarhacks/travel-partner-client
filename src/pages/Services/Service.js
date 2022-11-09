@@ -1,10 +1,23 @@
-import React from "react";
-import { Link, useLoaderData } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Link, useLoaderData, useParams } from "react-router-dom";
+import Review from "./Review";
 
 const Service = () => {
+  const [reviews, setReviews] = useState([]);
   const service = useLoaderData();
+  const { id } = useParams();
   const { _id, title, banner, thumb, duration, price, about, details } =
     service;
+  useEffect(() => {
+    fetch("http://localhost:5000/reviews")
+      .then((res) => res.json())
+      .then((data) => {
+        const newData = data.filter((d) => d.review === id);
+        setReviews(newData);
+      })
+      .catch((err) => console.log(err));
+  }, [id]);
+
   return (
     <div>
       <div className="m-10">
@@ -61,6 +74,11 @@ const Service = () => {
         <h1 className="text-4xl font-bold text-center text-sky-400 my-5">
           Review Section
         </h1>
+        <div className="grid grid-cols-1 gap-5">
+          {reviews.map((review) => (
+            <Review key={review._id} review={review} />
+          ))}
+        </div>
       </div>
     </div>
   );

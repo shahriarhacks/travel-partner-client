@@ -22,8 +22,9 @@ const AddReview = () => {
       email,
       message,
       userImg,
+      time: new Date(),
     };
-
+    console.log(review);
     fetch("http://localhost:5000/reviews", {
       method: "POST",
       headers: {
@@ -33,7 +34,6 @@ const AddReview = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
         if (data.acknowledged) {
           toast.success("Review Added Successfully");
           form.reset();

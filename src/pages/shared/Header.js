@@ -85,10 +85,10 @@ const Header = () => {
               title={user.displayName}
               alt=""
               src={user.photoURL}
-              className="object-cover w-10 h-10 rounded-full shadow dark:bg-gray-500"
+              className="object-cover w-10 h-10 rounded-full shadow bg-gray-500"
             />
           ) : (
-            <FcManager className="object-cover w-10 h-10 rounded-full shadow dark:bg-gray-500" />
+            <FcManager className="object-cover w-10 h-10 rounded-full shadow bg-gray-500" />
           )
         ) : (
           <Link
