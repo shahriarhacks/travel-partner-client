@@ -74,7 +74,7 @@ const Service = () => {
         <h1 className="text-4xl font-bold text-center text-sky-400 my-5">
           Review Section
         </h1>
-        <div className="grid grid-cols-1 gap-5">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
           {reviews.map((review) => (
             <Review key={review._id} review={review} />
           ))}

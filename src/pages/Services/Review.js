@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const Review = ({ review }) => {
   return (
-    <div className="flex justify-around flex-col lg:flex-row p-6 space-y-6 overflow-hidden rounded-lg shadow-md bg-gray-100 text-gray-900">
+    <div className="p-6 space-y-6 overflow-hidden rounded-lg shadow-md bg-gray-100 text-gray-900">
       <div className="flex space-x-4">
         <img
           alt=""
