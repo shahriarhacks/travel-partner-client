@@ -23,7 +23,8 @@ const Review = ({ review }) => {
         <p className="my-2">Review for:{review?.reviewName}</p>
         <p>Review Message: {review?.message}</p>
       </div>
-      {user.email === review.email ? (
+
+      {user?.email === review.email ? (
         <div className="flex justify-between">
           <div>
             <button className="btn btn-outline btn-warning hover:rounded-full">
