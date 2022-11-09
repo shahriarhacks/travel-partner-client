@@ -24,7 +24,6 @@ const AddReview = () => {
       userImg,
       time: new Date(),
     };
-    console.log(review);
     fetch("http://localhost:5000/reviews", {
       method: "POST",
       headers: {

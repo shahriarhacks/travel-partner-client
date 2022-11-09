@@ -4,7 +4,7 @@ import { AuthContext } from "../../contexts/AuthProvider";
 
 const Edit = () => {
   const { user } = useContext(AuthContext);
-  const { _id, title, message } = useLoaderData();
+  const { _id, title, message, time } = useLoaderData();
 
   const handelUpdate = (event) => {
     event.preventDefault();
@@ -21,7 +21,7 @@ const Edit = () => {
       email,
       message,
       userImg,
-      time: new Date(),
+      time: time,
     };
     console.log(review);
   };
