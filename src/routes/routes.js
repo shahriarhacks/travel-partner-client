@@ -13,6 +13,7 @@ import Services from "../pages/Services/Services";
 import About from "../pages/shared/About";
 import Contact from "../pages/shared/Contact";
 import ErrorPage from "../pages/shared/ErrorPage";
+import ProtectedRoute from "./ProtectedRoute";
 
 const router = createBrowserRouter([
   {
@@ -39,12 +40,7 @@ const router = createBrowserRouter([
         loader: ({ params }) =>
           fetch(`http://localhost:5000/packages/${params.id}`),
       },
-      {
-        path: "/give-review/:id",
-        element: <AddReview />,
-        loader: ({ params }) =>
-          fetch(`http://localhost:5000/packages/${params.id}`),
-      },
+
       {
         path: "/blog",
         element: <Blog />,
@@ -66,18 +62,40 @@ const router = createBrowserRouter([
         element: <Register />,
       },
       {
+        path: "/give-review/:id",
+        element: (
+          <ProtectedRoute>
+            <AddReview />
+          </ProtectedRoute>
+        ),
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/packages/${params.id}`),
+      },
+      {
         path: "reviews",
-        element: <Reviews />,
+        element: (
+          <ProtectedRoute>
+            <Reviews />
+          </ProtectedRoute>
+        ),
       },
       {
         path: "/edit/:id",
-        element: <Edit />,
+        element: (
+          <ProtectedRoute>
+            <Edit />
+          </ProtectedRoute>
+        ),
         loader: ({ params }) =>
           fetch(`http://localhost:5000/reviews/${params.id}`),
       },
       {
         path: "/add-services",
-        element: <AddServices />,
+        element: (
+          <ProtectedRoute>
+            <AddServices />
+          </ProtectedRoute>
+        ),
       },
     ],
   },
