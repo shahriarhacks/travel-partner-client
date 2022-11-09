@@ -20,7 +20,6 @@ const Login = () => {
     loginUser(email, password)
       .then((result) => {
         toast.success("Login Successfully Done");
-        console.log(result.user);
         form.reset();
         navigate(from, { replace: true });
       })
@@ -31,7 +30,6 @@ const Login = () => {
       .then((result) => {
         setError("");
         navigate(from, { replace: true });
-        console.log(result.user);
         toast.success("Successfully Login Done");
       })
       .catch((err) => setError(err.message));
