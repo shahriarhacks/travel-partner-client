@@ -49,7 +49,7 @@ const Service = () => {
 
         <div className="card lg:card-side bg-base-100 my-10 shadow-xl">
           <figure className="w-1/2">
-            <img src={banner} className="w-full" alt="Album" />
+            <img src={banner} className="w-full rounded-lg" alt="Album" />
           </figure>
           <div className="card-body w-1/2">
             <h2 className="card-title">{title}</h2>
