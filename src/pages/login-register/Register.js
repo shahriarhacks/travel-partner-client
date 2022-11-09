@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import Lottie from "lottie-react";
 import register from "../../assets/Animation/register.json";
 import { AuthContext } from "../../contexts/AuthProvider";
@@ -7,7 +7,12 @@ import { toast } from "react-toastify";
 
 const Register = () => {
   const [error, setError] = useState("");
-  const { createUser, updateUserProfile } = useContext(AuthContext);
+  const { createUser, updateUserProfile, googleLogin } =
+    useContext(AuthContext);
+
+  const location = useLocation();
+  const navigate = useNavigate();
+  const from = location.state?.from?.pathname || "/";
 
   const handleRegister = (e) => {
     e.preventDefault();
@@ -20,7 +25,7 @@ const Register = () => {
       .then((result) => {
         setError("");
         handleUpdateUserProfile(name, photoURL);
-        console.log(result.user);
+        navigate(from, { replace: true });
         form.reset();
       })
       .catch((err) => setError(err.message));
@@ -37,6 +42,16 @@ const Register = () => {
         toast.success("Successfully Updated");
       })
       .catch((error) => console.error(error));
+  };
+
+  const handleGoogleLogin = () => {
+    googleLogin()
+      .then((result) => {
+        setError("");
+        navigate(from, { replace: true });
+        toast.success("Successfully Login Done");
+      })
+      .catch((err) => setError(err.message));
   };
 
   return (
@@ -112,6 +127,7 @@ const Register = () => {
         </div>
         <div className="flex justify-center space-x-4">
           <button
+            onClick={handleGoogleLogin}
             aria-label="Login with Google"
             type="button"
             className="flex items-center justify-center w-full p-4 space-x-4 border rounded-md focus:ring-2 focus:ring-offset-1 border-gray-400 focus:ring-violet-400 hover:rounded-full"

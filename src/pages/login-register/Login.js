@@ -6,7 +6,7 @@ import { AuthContext } from "../../contexts/AuthProvider";
 import { toast } from "react-toastify";
 
 const Login = () => {
-  const { loginUser } = useContext(AuthContext);
+  const { loginUser, googleLogin } = useContext(AuthContext);
   const [error, setError] = useState("");
   const location = useLocation();
   const navigate = useNavigate();
@@ -23,6 +23,16 @@ const Login = () => {
         console.log(result.user);
         form.reset();
         navigate(from, { replace: true });
+      })
+      .catch((err) => setError(err.message));
+  };
+  const handleGoogleLogin = () => {
+    googleLogin()
+      .then((result) => {
+        setError("");
+        navigate(from, { replace: true });
+        console.log(result.user);
+        toast.success("Successfully Login Done");
       })
       .catch((err) => setError(err.message));
   };
@@ -78,6 +88,7 @@ const Login = () => {
         </div>
         <div className="flex justify-center space-x-4">
           <button
+            onClick={handleGoogleLogin}
             aria-label="Login with Google"
             type="button"
             className="flex items-center justify-center w-full p-4 space-x-4 border rounded-md focus:ring-2 focus:ring-offset-1 border-gray-400 focus:ring-violet-400 hover:rounded-full"

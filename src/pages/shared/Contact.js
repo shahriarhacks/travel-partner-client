@@ -2,8 +2,8 @@ import React from "react";
 
 const Contact = () => {
   return (
-    <div>
-      <div className="w-full flex items-center justify-center my-12">
+    <>
+      <div className="w-full flex items-center mx-6 justify-center my-12">
         <div className="bg-white shadow rounded py-12 lg:px-28">
           <h4 className="text-2xl text-center text-sky-400 font-bold my-4">
             Contact Form
@@ -85,7 +85,7 @@ const Contact = () => {
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 
