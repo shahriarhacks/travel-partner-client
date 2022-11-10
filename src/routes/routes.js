@@ -44,6 +44,7 @@ const router = createBrowserRouter([
       {
         path: "/blog",
         element: <Blog />,
+        loader: () => fetch("https://server-seven-silk.vercel.app/blog"),
       },
       {
         path: "/contact",
