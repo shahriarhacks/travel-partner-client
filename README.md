@@ -2,8 +2,26 @@
 
 A Traveling Platform
 
-# Getting Started with Create React AppR](https://tailwindcss.com/)
+# Getting Started with Create React App
 
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+## Live Link
+
+Hosted in Firebase Hosting -> [Travel Partner](https://go-travel-vacation.web.app/)
+
+## Server Side Vercel Link
+
+Vercel Live Link -> [Server Link](https://server-seven-silk.vercel.app/)
+
+## React Router Dom v6.4
+
+Documentation Link -> [Link](https://reactrouter.com/en/main/start/overview)
+
+## Resources & Credits
+
+Tailwind Components ->
+TailWind-> [TailwindCSS](https://tailwindcss.com/)
 DaisyUI-> [DaisyUI](https://daisyui.com/)
 For Tailwind Component-> [Mamba UI](https://www.mambaui.com/)
 
