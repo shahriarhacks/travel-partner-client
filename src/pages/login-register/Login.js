@@ -4,8 +4,10 @@ import Lottie from "lottie-react";
 import login from "../../assets/Animation/login.json";
 import { AuthContext } from "../../contexts/AuthProvider";
 import { toast } from "react-toastify";
+import useTitle from "../../hooks/useTitle";
 
 const Login = () => {
+  useTitle("Login");
   const { loginUser, googleLogin } = useContext(AuthContext);
   const [error, setError] = useState("");
   const location = useLocation();

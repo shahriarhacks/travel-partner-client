@@ -30,7 +30,7 @@ const Header = () => {
             <NavLink to="/add-services">Add Services</NavLink>
           </li>
           <li className="font-semibold">
-            <NavLink to="/reviews">Reviews</NavLink>
+            <NavLink to="/reviews">My Reviews</NavLink>
           </li>
           <li className="font-semibold">
             <button onClick={() => logout()}>Log Out</button>

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import useTitle from "../../hooks/useTitle";
 import About from "../shared/About";
 import Contact from "../shared/Contact";
 import ServiceCard from "../shared/ServiceCard";
@@ -8,6 +9,7 @@ import Subscribed from "../shared/Subscribed";
 import Banner from "./components/Banner";
 
 const Home = () => {
+  useTitle("Home");
   const [services, setServices] = useState([]);
   useEffect(() => {
     fetch("https://server-seven-silk.vercel.app/home/packages")

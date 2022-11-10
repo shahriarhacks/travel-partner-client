@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { Link, useLoaderData, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
+import useTitle from "../../hooks/useTitle";
 import Review from "./Review";
 
 const Service = () => {
+  useTitle("Single Service");
   const [reviews, setReviews] = useState([]);
   const service = useLoaderData();
   const { id } = useParams();

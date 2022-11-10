@@ -1,6 +1,8 @@
 import React from "react";
+import useTitle from "../../hooks/useTitle";
 
 const Contact = () => {
+  useTitle("Contact");
   return (
     <>
       <div className="w-full flex items-center mx-6 justify-center my-12">

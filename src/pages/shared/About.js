@@ -1,8 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import about from "../../assets/image/about.jpg";
+import useTitle from "../../hooks/useTitle";
 
 const About = () => {
+  useTitle("About");
   return (
     <div className="my-16">
       <h3 className="text-2xl text-center text-sky-400 font-bold">About Us</h3>

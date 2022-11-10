@@ -4,8 +4,10 @@ import Lottie from "lottie-react";
 import register from "../../assets/Animation/register.json";
 import { AuthContext } from "../../contexts/AuthProvider";
 import { toast } from "react-toastify";
+import useTitle from "../../hooks/useTitle";
 
 const Register = () => {
+  useTitle("Register");
   const [error, setError] = useState("");
   const { createUser, updateUserProfile, googleLogin } =
     useContext(AuthContext);

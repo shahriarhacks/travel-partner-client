@@ -2,9 +2,11 @@ import React, { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import { AuthContext } from "../../contexts/AuthProvider";
+import useTitle from "../../hooks/useTitle";
 import Review from "../Services/Review";
 
 const Reviews = () => {
+  useTitle("My Reviews");
   const [reviews, setReviews] = useState([]);
   const { user } = useContext(AuthContext);
   const url = `https://server-seven-silk.vercel.app/review?email=${user?.email}`;
