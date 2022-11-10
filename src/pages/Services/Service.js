@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link, useLoaderData, useParams } from "react-router-dom";
+import { toast } from "react-toastify";
 import Review from "./Review";
 
 const Service = () => {
@@ -18,6 +19,19 @@ const Service = () => {
       .catch((err) => console.log(err));
   }, [id]);
 
+  const handleDelete = (id) => {
+    fetch(`http://localhost:5000/reviews/${id}`, {
+      method: "DELETE",
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.deletedCount > 0) {
+          toast.success("Deleted successfully");
+          const remaining = reviews.filter((rv) => rv._id !== id);
+          setReviews(remaining);
+        }
+      });
+  };
   return (
     <div>
       <div className="m-10">
@@ -76,7 +90,11 @@ const Service = () => {
         </h1>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
           {reviews.map((review) => (
-            <Review key={review._id} review={review} />
+            <Review
+              key={review._id}
+              review={review}
+              handleDelete={handleDelete}
+            />
           ))}
         </div>
       </div>
