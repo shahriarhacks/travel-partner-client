@@ -21,7 +21,7 @@ const AddServices = () => {
       banner,
       thumb,
     };
-    fetch("http://localhost:5000/packages", {
+    fetch("https://server-seven-silk.vercel.app/packages", {
       method: "POST",
       headers: {
         "content-type": "application/json",

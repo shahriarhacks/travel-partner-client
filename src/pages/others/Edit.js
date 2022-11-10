@@ -1,10 +1,12 @@
 import React, { useContext } from "react";
 import { useLoaderData } from "react-router-dom";
+import { toast } from "react-toastify";
 import { AuthContext } from "../../contexts/AuthProvider";
 
 const Edit = () => {
   const { user } = useContext(AuthContext);
-  const { _id, title, message, time } = useLoaderData();
+  const reviews = useLoaderData();
+  const { _id, title, message, time } = reviews;
 
   const handelUpdate = (event) => {
     event.preventDefault();
@@ -13,7 +15,7 @@ const Edit = () => {
     const email = user?.email;
     const userImg = user?.photoURL;
     const message = form.message.value;
-
+    form.reset();
     const review = {
       review: _id,
       reviewName: title,
@@ -23,7 +25,20 @@ const Edit = () => {
       userImg,
       time: time,
     };
-    console.log(review);
+    fetch(`https://server-seven-silk.vercel.app/reviews/${_id}`, {
+      method: "PUT",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(review),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data?.acknowledged) {
+          toast.success("Updating Success");
+        }
+      })
+      .catch((err) => console.log(err));
   };
 
   return (

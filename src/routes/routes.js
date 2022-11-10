@@ -32,13 +32,13 @@ const router = createBrowserRouter([
       {
         path: "/services",
         element: <Services />,
-        loader: () => fetch("http://localhost:5000/packages"),
+        loader: () => fetch("https://server-seven-silk.vercel.app/packages"),
       },
       {
         path: "/service/:id",
         element: <Service />,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/packages/${params.id}`),
+          fetch(`https://server-seven-silk.vercel.app/packages/${params.id}`),
       },
 
       {
@@ -69,7 +69,7 @@ const router = createBrowserRouter([
           </ProtectedRoute>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/packages/${params.id}`),
+          fetch(`https://server-seven-silk.vercel.app/packages/${params.id}`),
       },
       {
         path: "reviews",
@@ -87,7 +87,7 @@ const router = createBrowserRouter([
           </ProtectedRoute>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/reviews/${params.id}`),
+          fetch(`https://server-seven-silk.vercel.app/reviews/${params.id}`),
       },
       {
         path: "/add-services",

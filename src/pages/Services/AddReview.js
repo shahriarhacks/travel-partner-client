@@ -24,7 +24,7 @@ const AddReview = () => {
       userImg,
       time: new Date(),
     };
-    fetch("http://localhost:5000/reviews", {
+    fetch("https://server-seven-silk.vercel.app/reviews", {
       method: "POST",
       headers: {
         "content-type": "application/json",

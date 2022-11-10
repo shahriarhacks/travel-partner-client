@@ -7,7 +7,7 @@ import Review from "../Services/Review";
 const Reviews = () => {
   const [reviews, setReviews] = useState([]);
   const { user } = useContext(AuthContext);
-  const url = `http://localhost:5000/review?email=${user?.email}`;
+  const url = `https://server-seven-silk.vercel.app/review?email=${user?.email}`;
   useEffect(() => {
     fetch(url)
       .then((res) => res.json())
@@ -16,7 +16,7 @@ const Reviews = () => {
   }, [url]);
 
   const handleDelete = (id) => {
-    fetch(`http://localhost:5000/reviews/${id}`, {
+    fetch(`https://server-seven-silk.vercel.app/reviews/${id}`, {
       method: "DELETE",
     })
       .then((res) => res.json())

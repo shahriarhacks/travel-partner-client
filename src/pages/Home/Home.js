@@ -10,7 +10,7 @@ import Banner from "./components/Banner";
 const Home = () => {
   const [services, setServices] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:5000/home/packages")
+    fetch("https://server-seven-silk.vercel.app/home/packages")
       .then((res) => res.json())
       .then((data) => setServices(data))
       .catch((err) => console.log(err));

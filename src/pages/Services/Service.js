@@ -10,7 +10,7 @@ const Service = () => {
   const { _id, title, banner, thumb, duration, price, about, details } =
     service;
   useEffect(() => {
-    fetch("http://localhost:5000/reviews")
+    fetch("https://server-seven-silk.vercel.app/reviews")
       .then((res) => res.json())
       .then((data) => {
         const newData = data.filter((d) => d.review === id);
@@ -20,7 +20,7 @@ const Service = () => {
   }, [id]);
 
   const handleDelete = (id) => {
-    fetch(`http://localhost:5000/reviews/${id}`, {
+    fetch(`https://server-seven-silk.vercel.app/reviews/${id}`, {
       method: "DELETE",
     })
       .then((res) => res.json())
