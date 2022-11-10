@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { PhotoProvider, PhotoView } from "react-photo-view";
 import { Link, useLoaderData, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 import useTitle from "../../hooks/useTitle";
@@ -39,7 +40,11 @@ const Service = () => {
       <div className="m-10">
         <div className="card card-compact w-full bg-base-100 shadow-xl">
           <figure>
-            <img src={thumb} className="w-3/4 h-3/4 rounded-xl" alt={title} />
+            <PhotoProvider>
+              <PhotoView src={thumb}>
+                <img src={thumb} style={{ objectFit: "cover" }} alt={title} />
+              </PhotoView>
+            </PhotoProvider>
           </figure>
           <div className="card-body mx-20">
             <h2 className="card-title">{title}</h2>
@@ -65,7 +70,11 @@ const Service = () => {
 
         <div className="card lg:card-side bg-base-100 my-10 shadow-xl">
           <figure className="w-1/2">
-            <img src={banner} className="w-full rounded-lg" alt="Album" />
+            <PhotoProvider>
+              <PhotoView src={banner}>
+                <img src={banner} style={{ objectFit: "cover" }} alt={title} />
+              </PhotoView>
+            </PhotoProvider>
           </figure>
           <div className="card-body w-1/2">
             <h2 className="card-title">{title}</h2>
