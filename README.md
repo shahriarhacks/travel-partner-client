@@ -12,7 +12,13 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Server Side Vercel Link
 
- Vercel Live Link -> [Server Link](https://server-seven-silk.vercel.app/)
+Uses Vercel
+
+## Database NoSQL
+MongoDB
+
+## Server Side Language
+NodeJS , ExpressJS
 
 ## React Router Dom v6.4
 
