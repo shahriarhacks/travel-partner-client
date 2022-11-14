@@ -8,11 +8,11 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Live Link
 
-<!-- Hosted in Firebase Hosting -> [Travel Partner](https://go-travel-vacation.web.app/) -->
+ Hosted in Firebase Hosting -> [Travel Partner](https://go-travel-vacation.web.app/)
 
 ## Server Side Vercel Link
 
-<!-- Vercel Live Link -> [Server Link](https://server-seven-silk.vercel.app/) -->
+ Vercel Live Link -> [Server Link](https://server-seven-silk.vercel.app/)
 
 ## React Router Dom v6.4
 
